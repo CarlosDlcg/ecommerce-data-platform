@@ -1,0 +1,79 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# =========================
+# Environment variables
+# =========================
+.env
+
+# =========================
+# Logs
+# =========================
+logs/
+airflow/logs/
+*.log
+
+# =========================
+# Data folders
+# =========================
+data/raw/*
+data/staging/*
+data/warehouse/*
+
+# Keep folder structure
+!data/raw/.gitkeep
+!data/staging/.gitkeep
+!data/warehouse/.gitkeep
+!airflow/logs/.gitkeep
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDEs
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# dbt
+# =========================
+dbt_packages/
+target/
+logs/
+
+# =========================
+# Airflow
+# =========================
+airflow-webserver.pid
+airflow.cfg
+standalone_admin_password.txt
+
+# =========================
+# Spark
+# =========================
+spark-warehouse/
+
+# =========================
+# Testing
+# =========================
+.pytest_cache/
+.coverage
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/

@@ -1,0 +1,358 @@
+Why This Project Matters
+1. Why This Project Matters
+Modern organizations generate more data than can be managed manually.
+Automated data pipelines are essential because they:
+•	Process large data volumes efficiently
+•	Reduce manual work
+•	Improve decision-making speed
+•	Enable scalable analytics
+They transform raw data into actionable business insights.
+2. Business Scenario
+You are a Data Engineer at a rapidly growing e-commerce company.
+Current challenges:
+•	Multiple disconnected data sources
+•	Manual data updates
+•	Delayed reporting
+•	No historical tracking
+•	Poor scalability
+Data sources include:
+•	Transactional databases
+•	Customer service platforms
+•	Marketing tools
+•	External APIs
+3. Business Goals
+Leadership wants a modern data platform that can:
+Scale with company growth
+Handle increasing data volumes without manual intervention.
+Support analytics and reporting
+Provide reliable data for:
+•	Daily reports
+•	Dashboards
+•	KPIs
+Preserve historical context
+Enable:
+•	Trend analysis
+•	Customer behavior tracking
+•	Revenue analysis
+•	Machine learning initiatives
+4. What You Will Build
+A complete automated data pipeline using:
+Apache Spark
+For:
+•	Data ingestion
+•	Large-scale processing
+dbt
+For:
+•	Business transformations
+•	Historical modeling (SCD2)
+Apache Airflow
+For:
+•	Workflow orchestration
+•	Scheduling
+•	Monitoring
+•	Error handling
+Pipeline Capabilities
+The solution will:
+•	Integrate multiple sources
+•	Automate processing
+•	Track historical changes
+•	Run on schedules
+•	Monitor execution
+•	Recover from failures
+5. Core Data Engineering Skills Applied
+Data Flow Mapping
+Design efficient movement of data through systems.
+Pipeline Engineering
+Build modular, scalable, maintainable pipelines.
+Data Integration
+Combine:
+•	Databases
+•	APIs
+•	External systems
+into a unified platform.
+Historical Data Modeling
+Use SCD2 techniques to preserve business history.
+Workflow Automation
+Create self-managing systems that:
+•	Execute automatically
+•	Handle failures
+•	Require minimal intervention
+6. Real Data Engineering Mindset
+Successful Data Engineers combine:
+Architecture
+Designing scalable systems.
+Development
+Writing production-quality code.
+Integration
+Connecting technologies and data sources.
+Operations
+Monitoring and maintaining pipelines.
+•	Data Engineering is not just coding—it is building reliable systems that support business decisions.
+7. Portfolio & Career Value
+This type of project demonstrates:
+Technical Skills
+•	Spark
+•	dbt
+•	Airflow
+•	ETL/ELT design
+Engineering Skills
+•	Scalability
+•	Automation
+•	Reliability
+•	Monitoring
+Business Understanding
+Connecting technical implementation with business value.
+8. Key Takeaway
+This project simulates a real-world enterprise Data Engineering environment where automated pipelines transform fragmented data into a scalable, analytics-ready platform.
+The project combines all major Data Engineering competencies:
+•	Data integration
+•	Pipeline architecture
+•	Workflow orchestration
+•	Historical tracking (SCD2)
+•	Monitoring and reliability
+You are building the central data platform of a growing company using Spark, dbt, and Airflow so that every team—from Marketing to Finance—can make decisions using reliable, historical, and automatically updated data.
+
+---
+
+Project Requirements
+1. Project Goal
+Build a production-ready automated data pipeline using:
+•	Python → development
+•	Apache Spark → distributed processing
+•	dbt → transformations & SCD2
+•	Apache Airflow → orchestration
+The pipeline must:
+•	Integrate multiple sources
+•	Track historical changes (SCD2)
+•	Run automatically every day
+•	Include monitoring and recovery mechanisms
+2. Functional Requirements
+Multi-Source Data Ingestion
+Pipeline must extract data from at least three source types:
+•	Database tables
+•	REST APIs
+•	CSV files
+Data Quality Validation
+Validate:
+•	Null values
+•	Data types
+•	Business rules
+Goal:
+•	Ensure trustworthy downstream analytics.
+Incremental Processing
+Process only:
+•	New records
+•	Updated records
+Benefits:
+•	Faster execution
+•	Lower resource consumption
+SCD2 Historical Tracking
+Maintain:
+•	Full history of changes
+•	Effective dates
+•	Current record indicators
+For key business entities (especially customers).
+Modular Transformations
+Organize logic into:
+•	Reusable functions
+•	Independent components
+•	Testable modules
+Error Handling & Recovery
+Must support:
+•	Retries
+•	Logging
+•	Alerting
+•	Recovery after failures
+Automated Scheduling
+Pipeline executes:
+•	Daily
+•	Through Airflow DAGs
+Data Lineage
+Document:
+•	Source systems
+•	Transformations
+•	Destination tables
+Goal:
+•	Trace data throughout the pipeline.
+3. Input Data Sources
+Customer Database (PostgreSQL)
+Fields:
+•	customer_id
+•	name
+•	email
+•	registration_date
+•	status
+Order API (JSON)
+Fields:
+•	order_id
+•	customer_id
+•	order_date
+•	total_amount
+•	items
+Product Catalog (CSV)
+Fields:
+•	product_id
+•	name
+•	category
+•	price
+•	supplier
+4. Expected Outputs
+Unified Customer Dimension
+SCD2 table containing:
+•	Historical customer versions
+•	Effective dates
+•	Current records
+Daily Order Facts
+Aggregated metrics by:
+•	Date
+•	Customer segment
+Product Performance Summary
+Business analysis including:
+•	Sales trends
+•	Product performance
+Data Quality Report
+Includes:
+•	Validation results
+•	Execution statistics
+•	Pipeline metrics
+5. Required Edge Case Handling
+Pipeline must handle:
+Bad Data
+•	Missing values
+•	Malformed records
+API Problems
+•	Timeouts
+•	Connection failures
+Duplicate Data
+•	Across systems
+•	Within datasets
+Schema Evolution
+•	New columns
+•	Changed structures
+Restartability
+•	Resume from checkpoints
+•	Avoid reprocessing everything
+6. Performance Requirements
+Baseline
+Process:
+•	Up to 100,000 records
+Within:
+•	2 hours
+Using:
+•	4 CPU cores
+•	8 GB RAM
+7. Scalability Requirements
+Batch Processing
+Default:
+•	1,000 records per batch
+Benefits:
+•	Lower memory usage
+•	Progress tracking
+Incremental Loads
+Only process:
+•	New/changed data
+Parallel Processing
+Run extractors concurrently:
+Example:
+•	PostgreSQL extractor
+•	API extractor
+•	CSV extractor
+at the same time.
+Memory Management
+Use:
+•	Pandas chunking
+•	Streaming reads
+Prevent:
+•	Memory overflow
+Connection Pooling
+Reuse database connections.
+Benefits:
+•	Better performance
+•	Lower connection overhead
+8. Horizontal Scalability Design
+Pipeline should support:
+Configurable Batch Sizes
+Adapt to available resources.
+Distributed Deployment
+Components can run on multiple nodes.
+Stateless Transformations
+Easy parallelization.
+Checkpointing
+Resume after failure without restarting everything.
+9. Performance Monitoring
+Track:
+•	Execution times
+•	Processed records
+•	Bottlenecks
+•	Resource usage
+Goal:
+•	Continuously optimize performance.
+10. Code Quality Requirements
+Configuration Layer
+Store:
+•	Environment settings
+•	Credentials
+•	Paths
+outside application code.
+Extraction Layer
+Separate connectors for:
+•	PostgreSQL
+•	API
+•	CSV
+Transformation Layer
+Use:
+•	Pure functions
+•	Unit-testable logic
+Loading Layer
+Implement:
+•	Atomic writes
+•	Rollback support
+Orchestration Layer
+Use:
+•	Airflow DAGs
+•	Explicit task dependencies
+Documentation
+Include:
+•	Logging
+•	Comments
+•	Business logic explanations
+•	Type hints
+11. Evaluation Criteria
+System Architecture
+•	Scalability
+•	Integration quality
+Code Quality
+•	Maintainability
+•	Organization
+•	Documentation
+Data Modeling
+•	Correct SCD2 implementation
+•	Proper dimensions/facts
+Error Handling
+•	Recovery
+•	Retries
+•	Robustness
+Operational Readiness
+•	Monitoring
+•	Alerting
+•	Troubleshooting support
+Big Picture (What They Really Want)
+This project is essentially asking you to build a mini production data platform:
+Ingestion
+PostgreSQL + API + CSV
+⬇
+Processing
+Spark
+⬇
+Historical Modeling
+dbt SCD2
+⬇
+Analytics Outputs
+Facts + Dimensions + Reports
+⬇
+Orchestration
+Airflow
+⬇
+Reliability
+Monitoring + Retries + Alerts + Checkpointing
+
