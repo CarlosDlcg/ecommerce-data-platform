@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: staging
+    database: ecommerce
+    schema: staging
+
+    tables:
+      - name: customers
+      - name: products
+      - name: orders

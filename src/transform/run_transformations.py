@@ -25,6 +25,10 @@ from src.load.staging_loader import (
     save_staging_data
 )
 
+from src.load.postgres_loader import (
+    write_to_postgres
+)
+
 from src.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
@@ -71,6 +75,11 @@ def main():
         "customers"
     )
 
+    write_to_postgres(
+        customers_df,
+        "customers"
+    )
+
     # PRODUCTS
 
     products_file = get_latest_file(
@@ -92,6 +101,11 @@ def main():
         "products"
     )
 
+    write_to_postgres(
+        products_df,
+        "products"
+    )
+
     # ORDERS
 
     orders_file = get_latest_file(
@@ -109,6 +123,11 @@ def main():
     )
 
     save_staging_data(
+        orders_df,
+        "orders"
+    )
+
+    write_to_postgres(
         orders_df,
         "orders"
     )
