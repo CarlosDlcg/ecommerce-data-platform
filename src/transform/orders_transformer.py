@@ -25,4 +25,11 @@ def transform_orders(df: DataFrame) -> DataFrame:
         )
     )
 
+    input_count = df.count()
+    output_count = transformed_df.count()
+
+    logger.info(
+        f"Orders | Input: {input_count} | Output: {output_count}"
+    )
+
     return transformed_df

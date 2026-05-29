@@ -29,10 +29,19 @@ from src.load.postgres_loader import (
     write_to_postgres
 )
 
+from src.transform.quality_checks import (
+    validate_not_empty
+)
+
+from src.utils.metrics import (
+    PipelineTimer
+)
+
 from src.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
+timer = PipelineTimer()
 
 def get_latest_file(path: str):
 
@@ -70,6 +79,11 @@ def main():
         customers_df
     )
 
+    validate_not_empty(
+        customers_df,
+        "customers"
+    )
+
     save_staging_data(
         customers_df,
         "customers"
@@ -94,6 +108,11 @@ def main():
 
     products_df = transform_products(
         products_df
+    )
+
+    validate_not_empty(
+    products_df,
+        "products"
     )
 
     save_staging_data(
@@ -127,6 +146,11 @@ def main():
         "orders"
     )
 
+    validate_not_empty(
+        orders_df,
+        "orders"
+    )
+
     write_to_postgres(
         orders_df,
         "orders"
@@ -134,6 +158,11 @@ def main():
 
     logger.info(
         "Spark transformations completed"
+    )
+
+    logger.info(
+        f"Pipeline duration: "
+        f"{timer.elapsed()} seconds"
     )
 
     spark.stop()
