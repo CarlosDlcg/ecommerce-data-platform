@@ -1,0 +1,19 @@
+services:
+
+  airflow:
+    image: apache/airflow:2.9.2
+
+    container_name: airflow_local
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      AIRFLOW_UID: 1000
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+
+    command: standalone
