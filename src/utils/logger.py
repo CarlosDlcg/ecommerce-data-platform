@@ -17,6 +17,11 @@ def setup_logger(name: str) -> logging.Logger:
             "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
         )
 
+        Path("logs").mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
         file_handler = logging.FileHandler(
             log_path / "pipeline.log"
         )

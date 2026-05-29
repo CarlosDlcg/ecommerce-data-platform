@@ -3,6 +3,10 @@ from pyspark.sql.functions import (
     current_timestamp
 )
 
+from src.utils.logger import setup_logger
+
+logger = setup_logger(__name__)
+
 
 def transform_orders(df: DataFrame) -> DataFrame:
 

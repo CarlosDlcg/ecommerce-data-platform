@@ -28,10 +28,12 @@ with DAG(
 
         extract_data = BashOperator(
             task_id="extract_data",
-            bash_command="echo 'Running extraction layer'",
-            execution_timeout=timedelta(minutes=5),
+            bash_command="""
+            pwd
+            ls -la /opt/project/scripts
+            bash /opt/project/scripts/run_extract.sh
+            """
         )
-
     with TaskGroup(
         group_id="transformation"
     ) as transformation_group:
